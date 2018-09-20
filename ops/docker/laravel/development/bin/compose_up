@@ -26,7 +26,7 @@ bash ops/docker/laravel/original/bin/build_image
 docker-compose -f ops/docker/laravel/development/docker-compose.yml up --build -d 
 sudo chmod -R 775 src/laravel/storage
 # install composer dependencies
-bash ops/docker/laravel/development/bin/exec "composer install"
+bash ops/docker/laravel/development/bin/exec "composer self-update; composer install"
 bash ops/docker/laravel/development/bin/exec "composer require spatie/laravel-permission"
 
 source ./ops/docker/bin/is_site_ready
@@ -37,7 +37,7 @@ echo -e "${color}
 	  ==========================================
 	   Open Laravel on  http://localhost:7070
 	  ==========================================
-	   Open PHPmyadmin on http://localhost:5555
+	   Open PHPmyadmin on http://localhost:5556
 	  ------------------------------------------
 	   PHPmyadmin Credentials:
 	   		Username -> root
