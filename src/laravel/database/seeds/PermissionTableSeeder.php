@@ -12,6 +12,8 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
+        app()['cache']->forget('spatie.permission.cache');
+
         $permissions = [
            'role-list',
            'role-create',

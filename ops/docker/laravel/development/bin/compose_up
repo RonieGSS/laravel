@@ -21,12 +21,19 @@ do
 	fi
 done
 
+volumeName='development_mysql_laravel_data'
+
+if docker volume ls | grep $volumeName;
+then
+	docker volume rm $volumeName
+fi
+
 # build original image
 bash ops/docker/laravel/original/bin/build_image
 docker-compose -f ops/docker/laravel/development/docker-compose.yml up --build -d 
 sudo chmod -R 775 src/laravel/storage
 # install composer dependencies
-bash ops/docker/laravel/development/bin/exec "composer self-update; composer install"
+bash ops/docker/laravel/development/bin/exec "composer self-update; composer install;"
 bash ops/docker/laravel/development/bin/exec "composer require spatie/laravel-permission"
 bash ops/docker/laravel/development/bin/exec "php artisan migrate:refresh --seed"
 bash ops/docker/laravel/development/bin/exec "find ./ -type d -exec chmod 755 {} \;
