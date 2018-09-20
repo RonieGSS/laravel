@@ -1,72 +1,61 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+@section('content')
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Users Management</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
+        </div>
+    </div>
+</div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+  <p>{{ $message }}</p>
+</div>
+@endif
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
 
-            .position-ref {
-                position: relative;
-            }
+<table class="table table-bordered">
+ <tr>
+   <th>No</th>
+   <th>Name</th>
+   <th>Email</th>
+   <th>Roles</th>
+   <th width="280px">Action</th>
+ </tr>
+ @foreach ($data as $key => $user)
+  <tr>
+    <td>{{ ++$i }}</td>
+    <td>{{ $user->name }}</td>
+    <td>{{ $user->email }}</td>
+    <td>
+      @if(!empty($user->getRoleNames()))
+        @foreach($user->getRoleNames() as $v)
+           <label class="badge badge-success">{{ $v }}</label>
+        @endforeach
+      @endif
+    </td>
+    <td>
+       <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
+       <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+ 
+        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+        {!! Form::close() !!}
+    </td>
+  </tr>
+ @endforeach
+</table>
 
-            .content {
-                text-align: center;
-            }
 
-            .title {
-                font-size: 84px;
-            }
+{!! $data->render() !!}
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-    	<div class="flex-center position-ref full-height">
-    		<h2 class="title">Laravel Application</h2>
-    	</div>	
-
-   </body>
-</html>
+@endsection

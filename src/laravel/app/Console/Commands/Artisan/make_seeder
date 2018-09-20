@@ -1,0 +1,5 @@
+#! /bin/bash
+read -p 'Seeder Name: ' seeder
+read -p 'Add options(press enter if none): ' options
+
+php artisan make:seeder $seeder $options

@@ -1,6 +1,6 @@
 #! /bin/bash
 
 read -p 'Controller Name: ' controller
-read -p 'Add options: ' options
+read -p 'Add options(press enter if none): ' options
 
 php artisan make:controller "${controller}Controller" $options

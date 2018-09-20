@@ -1,5 +1,5 @@
 #! /bin/bash
 read -p 'Command Name: ' command
-read -p 'Add options: ' options
+read -p 'Add options(press enter if none): ' options
 
 php artisan make:command $command $options

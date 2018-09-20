@@ -1,0 +1,6 @@
+#! /bin/bash
+
+read -p 'Migration Command: ' migration
+read -p 'Add options(press enter if none): ' options
+
+php artisan make:migration $migration $options

@@ -11,23 +11,29 @@ echo '
 - - - - - - - - - - - - - - - - - - - - - - - - - -
 1) Make Controller    => Artisan Make Controller
 2) Make Model         => Artisan Make Model
-3) Make Migrate       => Artisan Make Migration
-4) Migrate            => Artisan Migrate
-5) Publish            => Artisan Vendor Publish
-6) Make Command       => Artisan Make Command
-7) Back               => Return to bin/gss panel
-8) Quit               => Close the panel
+3) Make Migration     => Artisan Make Migration
+4) Make Seeder        => Artisan Make Seeder
+5) Migrate            => Artisan Migrate
+6) DB Seed            => Artisan Database Seed
+7) Publish            => Artisan Vendor Publish
+8) Make Command       => Artisan Make Command
+9) Make Auth          => Artisan Make Auth
+10) Back               => Return to bin/gss panel
+11) Quit               => Close the panel
 = = = = = = = = = = = = = = = = = = = = = = = = = =  
 '
 PS3='Please enter the number of your choice: '
 development[0]="Make Controller"
 development[1]="Make Model"
-development[2]="Make Migrate"
-development[3]="Migrate"
-development[4]="Publish"
-development[5]="Make Command"
-development[6]="Back"
-development[7]="Quit"
+development[2]="Make Migration"
+development[3]="Make Seeder"
+development[4]="Migrate"
+development[5]="DB Seed"
+development[6]="Publish"
+development[7]="Make Command"
+development[8]="Make Auth"
+development[9]="Back"
+development[10]="Quit"
 cd `dirname $0`/../../
 bin='ops/docker/laravel/development/bin'
 artisan='app/Console/Commands/Artisan'
@@ -42,12 +48,20 @@ do
             bash $bin/exec $artisan/make_model
             break
             ;;
-        "Make Migrate")
-            bash $bin/exec $artisan/make_migrate
+        "Make Migration")
+            bash $bin/exec $artisan/make_migration
+            break
+            ;;
+        "Make Seeder")
+            bash $bin/exec $artisan/make_seeder
             break
             ;;
         "Migrate")
             bash $bin/exec $artisan/migrate
+            break
+            ;;
+        "DB Seed")
+            bash $bin/exec $artisan/db_seed
             break
             ;;
         "Publish")
@@ -56,6 +70,10 @@ do
             ;;
         "Make Command")
             bash $bin/exec $artisan/make_command
+            break
+            ;;
+        "Make Auth")
+            bash $bin/exec $artisan/make_auth
             break
             ;;
         "Back")
