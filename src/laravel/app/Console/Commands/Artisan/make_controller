@@ -3,4 +3,4 @@
 read -p 'Controller Name: ' controller
 read -p 'Add options: ' options
 
-php artisan make:controller $controller $options
+php artisan make:controller "${controller}Controller" $options
