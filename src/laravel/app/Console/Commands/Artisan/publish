@@ -1,0 +1,4 @@
+#! /bin/bash
+read -p 'Add options: ' options
+
+php artisan vendor:publish $options

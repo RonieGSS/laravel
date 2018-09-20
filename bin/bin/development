@@ -9,51 +9,53 @@ echo '
 - - - - - - - - - - - - - - - - - - - - - - - - - -
                    DESCRIPTIONS
 - - - - - - - - - - - - - - - - - - - - - - - - - -
-1) Create Seed        => Create seed file
-2) Migrate Seed       => Migrate seeds
-3) Migrate Acl Tables => Migrate all acl tables
-4) Migration Create   => Create migration file
-5) Migration Migrate  => Run all migrations
-6) Update ACL         => Update acl tables
+1) Make Controller    => Artisan Make Controller
+2) Make Model         => Artisan Make Model
+3) Make Migrate       => Artisan Make Migration
+4) Migrate            => Artisan Migrate
+5) Publish            => Artisan Vendor Publish
+6) Make Command       => Artisan Make Command
 7) Back               => Return to bin/gss panel
 8) Quit               => Close the panel
 = = = = = = = = = = = = = = = = = = = = = = = = = =  
 '
 PS3='Please enter the number of your choice: '
-development[0]="Create Seed"
-development[1]="Migrate Seed"
-development[2]="Migrate Acl Tables"
-development[3]="Migration Create"
-development[4]="Migration Migrate"
-development[5]="Update ACL"
+development[0]="Make Controller"
+development[1]="Make Model"
+development[2]="Make Migrate"
+development[3]="Migrate"
+development[4]="Publish"
+development[5]="Make Command"
 development[6]="Back"
 development[7]="Quit"
 cd `dirname $0`/../../
+bin='ops/docker/laravel/development/bin'
+artisan='app/Console/Commands/Artisan'
 select opt in "${development[@]}"
 do
     case $opt in
-        "Create Seed")
-            bash ops/docker/laravel/development/bin/exec "seed_create"
+        "Make Controller")
+            bash $bin/exec $artisan/make_controller
             break
             ;;
-        "Migrate Seed")
-            bash ops/docker/laravel/development/bin/exec "seed_migrate"
+        "Make Model")
+            bash $bin/exec $artisan/make_model
             break
             ;;
-        "Migrate Acl Tables")
-            bash ops/docker/laravel/development/bin/exec "migrate_acl_tables"
+        "Make Migrate")
+            bash $bin/exec $artisan/make_migrate
             break
             ;;
-        "Migration Create")
-            bash ops/docker/laravel/development/bin/exec "migration_create"
+        "Migrate")
+            bash $bin/exec $artisan/migrate
             break
             ;;
-        "Migration Migrate")
-            bash ops/docker/laravel/development/bin/exec "migration_migrate"
+        "Publish")
+            bash $bin/exec $artisan/publish
             break
             ;;
-        "Update ACL")
-            bash ops/docker/laravel/development/bin/exec "update_acl"
+        "Make Command")
+            bash $bin/exec $artisan/make_command
             break
             ;;
         "Back")

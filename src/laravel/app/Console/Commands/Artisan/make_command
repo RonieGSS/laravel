@@ -1,0 +1,5 @@
+#! /bin/bash
+read -p 'Command Name: ' command
+read -p 'Add options: ' options
+
+php artisan make:command $command $options

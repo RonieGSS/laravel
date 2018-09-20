@@ -1,0 +1,6 @@
+#! /bin/bash
+
+read -p 'Model Name: ' model
+read -p 'Add options: ' options
+
+php artisan make:model $model $options
