@@ -65,7 +65,7 @@
     </head>
     <body>
     	<div class="flex-center position-ref full-height">
-    		<h2>Laravel Application</h2>
+    		<h2 class="title">Laravel Application</h2>
     	</div>	
 
    </body>
