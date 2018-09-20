@@ -17,9 +17,10 @@ echo '
 6) DB Seed            => Artisan Database Seed
 7) Publish            => Artisan Vendor Publish
 8) Make Command       => Artisan Make Command
-9) Make Auth          => Artisan Make Auth
-10) Back               => Return to bin/gss panel
-11) Quit               => Close the panel
+9) Random Command     => Any Artisan Command
+10) Make Auth         => Artisan Make Auth
+11) Back              => Return to bin/gss panel
+12) Quit              => Close the panel
 = = = = = = = = = = = = = = = = = = = = = = = = = =  
 '
 PS3='Please enter the number of your choice: '
@@ -31,9 +32,10 @@ development[4]="Migrate"
 development[5]="DB Seed"
 development[6]="Publish"
 development[7]="Make Command"
-development[8]="Make Auth"
-development[9]="Back"
-development[10]="Quit"
+development[8]="Random Command"
+development[9]="Make Auth"
+development[10]="Back"
+development[11]="Quit"
 cd `dirname $0`/../../
 bin='ops/docker/laravel/development/bin'
 artisan='app/Console/Commands/Artisan'
@@ -70,6 +72,10 @@ do
             ;;
         "Make Command")
             bash $bin/exec $artisan/make_command
+            break
+            ;;
+        "Random Command")
+            bash $bin/exec $artisan/random
             break
             ;;
         "Make Auth")

@@ -1,0 +1,4 @@
+#! /bin/bash
+read -p 'Add Artisan Command ' command
+
+php artisan $command
