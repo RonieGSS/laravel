@@ -1,0 +1,44 @@
+#! /bin/bash
+cd `dirname $0`/../../../../../
+color='\033[0;96m'
+colorEnd='\033[0m'
+
+if [ $(uname) == 'Linux' ];
+then
+    color='\e[1;36m'
+    colorEnd='\e[0m'
+fi
+containerNames=("hxhronie_laravel" "hxhronie_phpmyadmin" "hxhronie_mysql")
+
+for containerName in ${containerNames[*]}
+do
+	if docker ps -aq -f name=$containerName;
+	then
+		echo "Stopping ${containerName} container..."
+		docker stop $containerName
+		echo "Deleting ${containerName} container..."
+		docker rm $containerName
+	fi
+done
+
+# build original image
+bash ops/docker/laravel/original/bin/build_image
+docker-compose -f ops/docker/laravel/development/docker-compose.yml up --build -d 
+sudo chmod -R 775 src/laravel/storage
+bash ops/docker/laravel/development/bin/exec "composer install"
+source ./ops/docker/bin/is_site_ready
+# Check if site is ready meaning it shows apache2 logs
+isSiteReady 'hxhronie_laravel' 'apache2'
+
+echo -e "${color}
+	  ==========================================
+	   Open Laravel on  http://localhost:7070
+	  ==========================================
+	   Open PHPmyadmin on http://localhost:5555
+	  ------------------------------------------
+	   PHPmyadmin Credentials:
+	   		Username -> root
+	   		Password -> test
+	  ==========================================
+	 "
+echo -e "${colorEnd}"
