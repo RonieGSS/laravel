@@ -1,4 +1,4 @@
-# CakePHP Project Documentation
+# Laravel Project Documentation
 
 ## Brief Introduction
 

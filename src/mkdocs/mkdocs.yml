@@ -1,4 +1,4 @@
-site_name: CakePHP
+site_name: Laravel
 copyright: 'copyright © Global Synergy Solutions Inc., All rights reserved.'
 theme:
   name: 'material'

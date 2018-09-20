@@ -1,7 +1,7 @@
 #! /bin/bash
 echo '
 = = = = = = = = = = = = = = = = = = = = = = = = = =
-                 CakePHP Commands
+                 Laravel Commands
 - - - - - - - - - - - - - - - - - - - - - - - - - -
 
  Select from the following set of commands:

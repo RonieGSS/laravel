@@ -25,7 +25,10 @@ done
 bash ops/docker/laravel/original/bin/build_image
 docker-compose -f ops/docker/laravel/development/docker-compose.yml up --build -d 
 sudo chmod -R 775 src/laravel/storage
+# install composer dependencies
 bash ops/docker/laravel/development/bin/exec "composer install"
+bash ops/docker/laravel/development/bin/exec "composer require spatie/laravel-permission"
+
 source ./ops/docker/bin/is_site_ready
 # Check if site is ready meaning it shows apache2 logs
 isSiteReady 'hxhronie_laravel' 'apache2'
