@@ -47,6 +47,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && composer global require hirak/prestissimo
 # Change directory to /var/www/html
-WORKDIR /var/www/html
+WORKDIR /var/www/html/src/laravel/public
+RUN chgrp -R www-data /var/www/html/src/laravel
 EXPOSE 80
 
