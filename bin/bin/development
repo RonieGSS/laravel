@@ -33,27 +33,27 @@ select opt in "${development[@]}"
 do
     case $opt in
         "Create Seed")
-            bash ops/docker/cakephp/development/bin/exec "seed_create"
+            bash ops/docker/laravel/development/bin/exec "seed_create"
             break
             ;;
         "Migrate Seed")
-            bash ops/docker/cakephp/development/bin/exec "seed_migrate"
+            bash ops/docker/laravel/development/bin/exec "seed_migrate"
             break
             ;;
         "Migrate Acl Tables")
-            bash ops/docker/cakephp/development/bin/exec "migrate_acl_tables"
+            bash ops/docker/laravel/development/bin/exec "migrate_acl_tables"
             break
             ;;
         "Migration Create")
-            bash ops/docker/cakephp/development/bin/exec "migration_create"
+            bash ops/docker/laravel/development/bin/exec "migration_create"
             break
             ;;
         "Migration Migrate")
-            bash ops/docker/cakephp/development/bin/exec "migration_migrate"
+            bash ops/docker/laravel/development/bin/exec "migration_migrate"
             break
             ;;
         "Update ACL")
-            bash ops/docker/cakephp/development/bin/exec "update_acl"
+            bash ops/docker/laravel/development/bin/exec "update_acl"
             break
             ;;
         "Back")
