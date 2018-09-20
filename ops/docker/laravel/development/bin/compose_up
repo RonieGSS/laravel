@@ -28,8 +28,7 @@ sudo chmod -R 775 src/laravel/storage
 # install composer dependencies
 bash ops/docker/laravel/development/bin/exec "composer self-update; composer install"
 bash ops/docker/laravel/development/bin/exec "composer require spatie/laravel-permission"
-bash ops/docker/laravel/development/bin/exec "php artisan migrate"
-bash ops/docker/laravel/development/bin/exec "php artisan db:seed"
+bash ops/docker/laravel/development/bin/exec "php artisan migrate:refresh --seed"
 
 source ./ops/docker/bin/is_site_ready
 # Check if site is ready meaning it shows apache2 logs
