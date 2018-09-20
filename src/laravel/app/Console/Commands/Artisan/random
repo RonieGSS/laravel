@@ -1,4 +1,4 @@
 #! /bin/bash
-read -p 'Add Artisan Command ' command
+read -p 'Add Artisan Command (e.g. cache:forget spatie.permission.cache)' command
 
 php artisan $command
