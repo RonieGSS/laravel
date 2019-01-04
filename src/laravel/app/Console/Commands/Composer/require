@@ -1,0 +1,4 @@
+#! /bin/bash
+read -p 'Type a package to require: ' package
+
+composer require $package

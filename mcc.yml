@@ -1,0 +1,91 @@
+---
+schema_version: v1.1.0
+timezone: Asia/Tokyo
+widgets:   
+  - id: development
+    type: menu
+    title: DEVELOPMENT TOOLS
+    content:
+      - category: development
+        name: Composer Install
+        description: composer install
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Composer/install
+      - category: development
+        name: Composer Require
+        description: composer require package
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Composer/require
+      - category: development
+        name: Migrate
+        description: php artisan db seed
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Artisan/migrate
+      - category: development
+        name: DB Seed
+        description: php artisan db seed
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Artisan/db_seed
+      - category: development
+        name: Make Migration
+        description: php artisan make migration
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Artisan/make_migration
+      - category: development
+        name: Make Seeder
+        description: php artisan make seeder
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Artisan/make_seeder
+      - category: development
+        name: Make Controller
+        description: php artisan make controller
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Artisan/make_controller
+      - category: development
+        name: Make Model
+        description: php artisan make model
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Artisan/make_model
+      - category: development
+        name: Make Auth
+        description: php artisan make auth
+        command: ops/docker/laravel/development/bin/exec app/Console/Commands/Artisan/make_auth
+  - id: laravel
+    type: menu
+    title: LARAVEL
+    content:
+      - category: laravel
+        name: Docker Compose
+        description: Build and run containers
+        command: ops/docker/laravel/development/bin/compose_up
+      - category: laravel
+        name: Container Logs 
+        description: Show container logs
+        command: ops/docker/laravel/development/bin/logs
+      - category: laravel
+        name: SSH Laravel(Apache) Container
+        description: Execute docker exec to get in the Laravel container
+        command: ops/docker/laravel/development/bin/exec
+  - id: mkdocs
+    type: menu
+    title: MKDOCS
+    content:
+      - category: mkdocs
+        name: Mkdocs serve
+        description: Build and run mkdocs container
+        command: ops/docker/mkdocs/bin/serve
+      - category: mkdocs
+        name: Mkdocs build
+        description: Build css, html, js files
+        command: ops/docker/mkdocs/bin/build
+      - category: mkdocs
+        name: Mkdocs logs 
+        description: Show container logs
+        command: ops/docker/mkdocs/bin/logs
+
+layout:
+  - name: DASHBOARD
+    rows:
+      - height: 100%
+        cols:
+          - width: 6
+            stacks:
+              - id: development
+                height: 20% 
+              - id: laravel
+                height: 20% 
+              - id: mkdocs
+                height: 20%
+

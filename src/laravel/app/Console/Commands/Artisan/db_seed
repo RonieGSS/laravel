@@ -4,7 +4,7 @@ read -p 'Add options(press enter if none): ' options
 
 if [ ! -z $seed ];
 then
-	seed_class="--class=${seed}Seeder"
+	seed_class="--class=${seed}"
 else 
 	seed_class=''
 fi
