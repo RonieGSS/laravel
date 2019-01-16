@@ -1,3 +1,3 @@
-FROM hxhroniegss/laravel5
+FROM gssc/laravel5
 USER root:root
 LABEL maintainer="Ronie Vincent Horca <ronievincent.gss@gmail.com>"

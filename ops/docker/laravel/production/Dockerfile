@@ -1,8 +1,6 @@
-FROM hxhroniegss/cakephp3
+FROM gssc/laravel
 LABEL maintainer="Ronie Vincent Horca <ronievincent.gss@gmail.com>"
-# Changed directory to cakephp
-WORKDIR /var/www/html/src/cakephp
+# Changed directory to laravel
+WORKDIR /var/www/html/src/laravel
 
-RUN composer install -o \
-    && bin/cake plugin assets symlink
 

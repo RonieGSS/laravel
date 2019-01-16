@@ -9,11 +9,11 @@ services:
 
  laravel:
    build: .
-   container_name: hxhronie_laravel
+   container_name: uruca_laravel
    networks:
     - laravel_network
    ports:
-     - "7070:80"
+     - "7272:80"
    depends_on:
      - mysql
    volumes:
@@ -25,11 +25,11 @@ services:
      - MYSQL_PASSWORD=test
  mysql:
    image: mysql:5.7.22
-   container_name: hxhronie_mysql
+   container_name: uruca_mysql
    networks:
     - laravel_network
    volumes:
-     - mysql_laravel_data:/var/lib/mysql
+     - mysql_uruca_laravel_data:/var/lib/mysql
    environment:
      - MYSQL_ROOT_PASSWORD=test
      - MYSQL_DATABASE=laravel
@@ -45,7 +45,7 @@ services:
 
  phpmyadmin:
    image: phpmyadmin/phpmyadmin:4.7
-   container_name: hxhronie_phpmyadmin
+   container_name: uruca_phpmyadmin
    networks:
     - laravel_network
    links:
@@ -53,12 +53,11 @@ services:
    depends_on: 
      - mysql
    ports:
-     - "5556:80"
+     - "5558:80"
    environment:
      - PMA_HOST=mysql
      - PMA_PORT=3306
 volumes:
-   mysql_laravel_data:
+   mysql_uruca_laravel_data:
 networks:
   laravel_network:
-

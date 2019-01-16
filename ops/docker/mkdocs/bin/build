@@ -1,7 +1,7 @@
 #! /bin/bash
 cd `dirname $0`/../../../../
 projectPath=$(git rev-parse --show-toplevel) 
-containerName='hxhronie_mkdocs'
+containerName='uruca_mkdocs'
 
 if [[ $(docker ps -f name=$containerName | grep 'mkdocs' -o) ]];
 then
