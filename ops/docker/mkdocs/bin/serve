@@ -3,7 +3,7 @@ cd `dirname $0`/../../../../
 projectPath=$(git rev-parse --show-toplevel) 
 
 # remove mkdocs container if it exists
-containerName="uruca_mkdocs"
+containerName="hxhronie_mkdocs"
 if [[ $(docker ps -aq -f name=$containerName) ]];
 then
 	echo "Stopping mkdocs container..."

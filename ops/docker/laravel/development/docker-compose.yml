@@ -9,27 +9,27 @@ services:
 
  laravel:
    build: .
-   container_name: uruca_laravel
+   container_name: hxhronie_laravel
    networks:
     - laravel_network
    ports:
      - "7272:80"
    depends_on:
-     - mysql
+     - laravel_mysql
    volumes:
      - "../../../../:/var/www/html/"
    environment:
      - SECURITY_SALT=ashg4543323dd3434343434dsddet556kk
-     - MYSQL_URL=mysql
+     - MYSQL_URL=laravel_mysql
      - MYSQL_USERNAME=root
      - MYSQL_PASSWORD=test
- mysql:
+ laravel_mysql:
    image: mysql:5.7.22
-   container_name: uruca_mysql
+   container_name: hxhronie_mysql
    networks:
     - laravel_network
    volumes:
-     - mysql_uruca_laravel_data:/var/lib/mysql
+     - mysql_hxhronie_laravel_data:/var/lib/mysql
    environment:
      - MYSQL_ROOT_PASSWORD=test
      - MYSQL_DATABASE=laravel
@@ -43,21 +43,21 @@ services:
 # remember to import the database tables
 # to use your app
 
- phpmyadmin:
+ laravel_phpmyadmin:
    image: phpmyadmin/phpmyadmin:4.7
-   container_name: uruca_phpmyadmin
+   container_name: hxhronie_phpmyadmin
    networks:
     - laravel_network
    links:
-     - mysql:db
+     - laravel_mysql:db
    depends_on: 
-     - mysql
+     - laravel_mysql
    ports:
      - "5558:80"
    environment:
-     - PMA_HOST=mysql
+     - PMA_HOST=laravel_mysql
      - PMA_PORT=3306
 volumes:
-   mysql_uruca_laravel_data:
+   mysql_hxhronie_laravel_data:
 networks:
   laravel_network:

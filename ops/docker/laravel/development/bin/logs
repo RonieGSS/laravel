@@ -1,6 +1,6 @@
 #! /bin/bash
 
-containerNames=("uruca_laravel" "uruca_phpmyadmin" "uruca_mysql")
+containerNames=("hxhronie_laravel" "hxhronie_phpmyadmin" "hxhronie_mysql")
 
 for containerName in ${containerNames[*]}
 do
